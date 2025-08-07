@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Us - Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #dff9fb, #c7ecee, #74b9ff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signup-container {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 450px;
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2d3436;
+      font-size: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #2d3436;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #b2bec3;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #0984e3;
+      outline: none;
+      box-shadow: 0 0 5px rgba(9,132,227,0.3);
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 14px;
+      background-color: #0984e3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-group button:hover {
+      background-color: #74b9ff;
+    }
+
+    @media (max-width: 500px) {
+      .signup-container {
+        padding: 30px 20px;
+      }
+
+      .signup-container h2 {
+        font-size: 24px;
+      }
+
+      .form-group label,
+      .form-group input {
+        font-size: 14px;
+      }
+
+      .form-group button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-container">
+    <h2>Join Us</h2>
+    <form>
+      <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" id="Name" name="Name" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      </div>
+      <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="text" id="userId" name="userId" placeholder="Create a user ID" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Set Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Create Account</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

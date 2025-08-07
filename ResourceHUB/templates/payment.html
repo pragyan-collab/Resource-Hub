@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Payment</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .payment-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      text-align: center;
+      width: 360px;
+    }
+
+    .timer {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #ff5722;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .qr-code {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: #fff;
+    }
+
+    .qr-code img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .cancel {
+      background-color: #e74c3c;
+      color: white;
+    }
+
+    .cancel:hover {
+      background-color: #c0392b;
+    }
+
+    .refresh {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .refresh:hover {
+      background-color: #2980b9;
+    }
+
+    .help {
+      background-color: #2ecc71;
+      color: white;
+    }
+
+    .help:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-container">
+    <div class="timer" id="timer">10:00</div>
+    <h2>Scan to Pay</h2>
+    <div class="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://example.com/payment?id=random123" alt="QR Code">
+    </div>
+
+    <div class="button-group">
+      <button class="button cancel" onclick="cancelPayment()">Cancel</button>
+      <button class="button refresh" onclick="refreshQR()">Refresh</button>
+      <button class="button help" onclick="showHelp()">Help</button>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer
+    let timeLeft = 600; // 10 minutes
+    const timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      if (timeLeft > 0) {
+        timeLeft--;
+      } else {
+        clearInterval(timerInterval);
+        // Redirect to home.html after timeout
+        window.location.href = "home.html";
+      }
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    function cancelPayment() {
+      const confirmCancel = confirm("Are you sure you want to cancel the payment?");
+      if (confirmCancel) {
+        window.location.href = "home.html"; // Redirects to homepage
+      }
+    }
+
+    function refreshQR() {
+      const qrImg = document.querySelector('.qr-code img');
+      const randomId = Math.random().toString(36).substring(7);
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://example.com/payment?id=${randomId}`;
+    }
+
+    function showHelp() {
+      alert("Need help? Please contact support@example.com.");
+    }
+  </script>
+
+</body>
+</html>

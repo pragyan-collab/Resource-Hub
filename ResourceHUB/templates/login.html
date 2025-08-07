@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #74b9ff, #a29bfe, #81ecec, #ffeaa7);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .floating-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-bg span {
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      animation: floatUp 20s linear infinite;
+      bottom: -150px;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .floating-bg span:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-delay: 0s; }
+    .floating-bg span:nth-child(2) { left: 20%; width: 30px; height: 30px; animation-delay: 3s; }
+    .floating-bg span:nth-child(3) { left: 35%; width: 50px; height: 50px; animation-delay: 5s; }
+    .floating-bg span:nth-child(4) { left: 50%; width: 20px; height: 20px; animation-delay: 7s; }
+    .floating-bg span:nth-child(5) { left: 70%; width: 25px; height: 25px; animation-delay: 10s; }
+    .floating-bg span:nth-child(6) { left: 85%; width: 35px; height: 35px; animation-delay: 12s; }
+
+    @keyframes shadowPulse {
+      0% {
+        box-shadow: 0 0 20px rgba(116, 185, 255, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(162, 155, 254, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(116, 185, 255, 0.5);
+      }
+    }
+
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 16px;
+      animation: shadowPulse 4s ease-in-out infinite;
+      width: 90%;
+      max-width: 400px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #2d3436;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3436;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #0984e3;
+      outline: none;
+      box-shadow: 0 0 6px rgba(9, 132, 227, 0.3);
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 14px;
+      background-color: #0984e3;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #74b9ff;
+    }
+
+    @media (max-width: 500px) {
+      .login-container {
+        padding: 30px 20px;
+      }
+
+      .login-container h2 {
+        font-size: 24px;
+      }
+
+      .form-group label,
+      .form-group input {
+        font-size: 14px;
+      }
+
+      .form-group button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating animated background elements -->
+  <div class="floating-bg">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Login Form Container -->
+  <div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">User Name</label>
+        <input type="text" id="username" name="username" required placeholder="Enter username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Enter The password" />
+      </div>
+      <div class="form-group">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
